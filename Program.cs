@@ -93,26 +93,38 @@ for (int i = 0; i < 2; i++)
         {
             Console.WriteLine("You choosed number 2. \nType 2 number you want to divide. Second number cannot be bigger than 100.  \nFirst number:");
             number1 = Console.ReadLine();
-            Console.WriteLine("Now type second number:");
-            number2 = Console.ReadLine();
 
-            if (Convert.ToDouble(number2) > 100)
+
+            do
             {
-                Console.WriteLine("Second number is too big. Max. number is 100. Try again.");
+
                 Console.WriteLine("Second number:");
-
                 number2 = Console.ReadLine();
-            }
+                if(Convert.ToDouble(number2) > 100)
+                {
+                    Console.WriteLine("Only numbers <= 100 are allowed");
+
+                }
 
 
+            } while (Convert.ToDouble(number2) > 100);
+
+            if(CheckModulo(Convert.ToDouble(number1), Convert.ToDouble(number2) ) == false)
+                {
+                Console.WriteLine("The result of the operation is not an integer. Enter other numbers.");
 
 
-        } while (CheckModulo(Convert.ToDouble(number1), Convert.ToDouble(number2)));
+                }
+
+
+        } while (!(CheckModulo(Convert.ToDouble(number1), Convert.ToDouble(number2))));
 
 
 
         double output = Convert.ToDouble(number1) / Convert.ToDouble(number2);
         Console.WriteLine("Quotient of these 2 numbers is: " + output);
+        Console.WriteLine("");
+        Console.WriteLine("");
 
         historyOfGames.Add($"You choosed game number 4. First number was: {number1} , second number was: {number2}, output was: {output}");
 
